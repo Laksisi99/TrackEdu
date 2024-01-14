@@ -1,0 +1,19 @@
+{
+  "name": "trackedu",
+  "version": "1.0.0",
+  "description": "Student Monitoring System for SLTC",
+  "main": "server.js",
+  "scripts": {
+    "test": "STUDENT MONITORING SLTC"
+  },
+  "keywords": [
+    "SLTC",
+    "STUDENT",
+    "MONITORING"
+  ],
+  "author": "Laksisi Chetha Gunaratne",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
