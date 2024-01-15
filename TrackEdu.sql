@@ -39,7 +39,7 @@ CREATE TABLE Students (
     Student_Reg_Num VARCHAR(20) UNIQUE NOT NULL,
     Student_Email VARCHAR(100) UNIQUE NOT NULL,
     Student_Contact_Number VARCHAR(15),
-    Lecturer_NIC VARCHAR(15) UNIQUE NOT NULL,
+    Student_NIC VARCHAR(15) UNIQUE NOT NULL,
     Student_Password VARCHAR(100) NOT NULL,
     Batch_ID INT,
     Club_ID INT,
