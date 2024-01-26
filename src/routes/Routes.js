@@ -4,6 +4,7 @@ const AdminService = require('../services/AdminService');
 const ClubService = require('../services/ClubService');
 const BatchService = require('../services/BatchService');
 const LecturerService = require('../services/LecturerService');
+const StudentService = require('../services/StudentService');
 
 //admin routes
 router.post('/admin/add', AdminService.addAdmin);
@@ -38,6 +39,16 @@ router.get('/lecturer/getByEmail/:Lecturer_Email', LecturerService.getLecturerBy
 router.get('/lecturer/getByName/:Lecturer_Name', LecturerService.getLecturerByName);
 router.put('/lecturer/update/:Lecturer_ID', LecturerService.updateLecturer);
 router.delete('/lecturer/drop/:Lecturer_ID', LecturerService.deleteLecturer);
+
+//student routes
+router.post('/student/add', StudentService.addStudent);
+router.get('/student', StudentService.getAllStudents);
+router.get('/student/getById/:Student_ID', StudentService.getStudentById);
+router.get('/student/getByEmail/:Student_Email', StudentService.getStudentByEmail);
+router.get('/student/getByName/:Student_Name', StudentService.getStudentByName);
+router.get('/student/getByRegNum/:Student_Reg_Num', StudentService.getStudentByRegNum);
+router.put('/student/update/:Student_ID', StudentService.updateStudent);
+router.delete('/student/drop/:Student_ID', StudentService.deleteStudent);
 
 
 module.exports = router;
