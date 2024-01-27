@@ -5,6 +5,7 @@ const ClubService = require('../services/ClubService');
 const BatchService = require('../services/BatchService');
 const LecturerService = require('../services/LecturerService');
 const StudentService = require('../services/StudentService');
+const AcademicStaffService = require('../services/AcademicStaffService');
 
 //admin routes
 router.post('/admin/add', AdminService.addAdmin);
@@ -50,5 +51,14 @@ router.get('/student/getByRegNum/:Student_Reg_Num', StudentService.getStudentByR
 router.put('/student/update/:Student_ID', StudentService.updateStudent);
 router.delete('/student/drop/:Student_ID', StudentService.deleteStudent);
 
+//academic staff routes
+router.post('/academicStaff/add', AcademicStaffService.addAcademicStaff);
+router.get('/academicStaff', AcademicStaffService.getAllAcademicStaff);
+router.get('/academicStaff/getById/:Academic_Staff_ID', AcademicStaffService.getAcademicStaffById);
+router.get('/academicStaff/getByEmail/:Academic_Staff_Email', AcademicStaffService.getAcademicStaffByEmail);
+router.get('/academicStaff/getByName/:Academic_Staff_Name', AcademicStaffService.getAcademicStaffByName);
+router.get('/academicStaff/getByNIC/:Academic_Staff_NIC', AcademicStaffService.getAcademicStaffByNIC);
+router.put('/academicStaff/update/:Academic_Staff_ID', AcademicStaffService.updateAcademicStaff);
+router.delete('/academicStaff/drop/:Academic_Staff_ID', AcademicStaffService.deleteAcademicStaff);
 
 module.exports = router;
