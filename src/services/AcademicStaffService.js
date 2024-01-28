@@ -103,8 +103,13 @@ const AcademicStaffService = {
             Academic_Staff_Password 
         } = req.body; 
         try {
-            const results = await AcademicStaffModel.updateAcademicStaff(Academic_Staff_ID, Academic_Staff_Name, Academic_Staff_Email, Academic_Staff_Contact_Number, Academic_Staff_NIC, Academic_Staff_Password);
-            if(results.affectedRows === 0) return errorResponse(res, 'Academic Staff could not be updated', 500);
+            const hashedPassword = await hashPassword(Academic_Staff_Password);
+
+            const results = await AcademicStaffModel.updateAcademicStaff(Academic_Staff_ID, Academic_Staff_Name, Academic_Staff_Email, Academic_Staff_Contact_Number, Academic_Staff_NIC, hashedPassword);
+            if(results.affectedRows === 0) 
+                return errorResponse(res, 'Academic Staff could not be updated', 500);
+            else if(results.affectedRows === 1)
+                affectedAcademicStaff = await AcademicStaffModel.getAcademicStaffById(Academic_Staff_ID);
             successResponse(res, 'Academic Staff updated successfully');
         } catch (error) {
             console.error('Error in updating Academic Staff:', error);

@@ -6,6 +6,7 @@ const BatchService = require('../services/BatchService');
 const LecturerService = require('../services/LecturerService');
 const StudentService = require('../services/StudentService');
 const AcademicStaffService = require('../services/AcademicStaffService');
+const NonAcademicStaffService = require('../services/NonAcademicStaffService');
 
 //admin routes
 router.post('/admin/add', AdminService.addAdmin);
@@ -60,5 +61,16 @@ router.get('/academicStaff/getByName/:Academic_Staff_Name', AcademicStaffService
 router.get('/academicStaff/getByNIC/:Academic_Staff_NIC', AcademicStaffService.getAcademicStaffByNIC);
 router.put('/academicStaff/update/:Academic_Staff_ID', AcademicStaffService.updateAcademicStaff);
 router.delete('/academicStaff/drop/:Academic_Staff_ID', AcademicStaffService.deleteAcademicStaff);
+
+//non academic staff routes
+router.post('/nonAcademicStaff/add', NonAcademicStaffService.addNonAcademicStaff);
+router.get('/nonAcademicStaff', NonAcademicStaffService.getAllNonAcademicStaff);
+router.get('/nonAcademicStaff/getById/:Non_Academic_Staff_ID', NonAcademicStaffService.getNonAcademicStaffById);
+router.get('/nonAcademicStaff/getByEmail/:Non_Academic_Staff_Email', NonAcademicStaffService.getNonAcademicStaffByEmail);
+router.get('/nonAcademicStaff/getByName/:Non_Academic_Staff_Name', NonAcademicStaffService.getNonAcademicStaffByName);
+router.get('/nonAcademicStaff/getByNIC/:Non_Academic_Staff_NIC', NonAcademicStaffService.getNonAcademicStaffByNIC);
+router.get('/nonAcademicStaff/getByClubID/:Club_ID', NonAcademicStaffService.getNonAcademicStaffClubID);
+router.put('/nonAcademicStaff/update/:Non_Academic_Staff_ID', NonAcademicStaffService.updateNonAcademicStaff);
+router.delete('/nonAcademicStaff/drop/:Non_Academic_Staff_ID', NonAcademicStaffService.deleteNonAcademicStaff);
 
 module.exports = router;
