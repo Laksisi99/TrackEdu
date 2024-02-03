@@ -7,6 +7,7 @@ const LecturerService = require('../services/LecturerService');
 const StudentService = require('../services/StudentService');
 const AcademicStaffService = require('../services/AcademicStaffService');
 const NonAcademicStaffService = require('../services/NonAcademicStaffService');
+const CourseService = require('../services/CourseService');
 
 //admin routes
 router.post('/admin/add', AdminService.addAdmin);
@@ -72,5 +73,16 @@ router.get('/nonAcademicStaff/getByNIC/:Non_Academic_Staff_NIC', NonAcademicStaf
 router.get('/nonAcademicStaff/getByClubID/:Club_ID', NonAcademicStaffService.getNonAcademicStaffClubID);
 router.put('/nonAcademicStaff/update/:Non_Academic_Staff_ID', NonAcademicStaffService.updateNonAcademicStaff);
 router.delete('/nonAcademicStaff/drop/:Non_Academic_Staff_ID', NonAcademicStaffService.deleteNonAcademicStaff);
+
+//course routes
+router.post('/course/add', CourseService.addCourse);
+router.get('/course', CourseService.getAllCourses);
+router.get('/course/getById/:Course_ID', CourseService.getCourseById);
+router.get('/course/getByCode/:Course_Code', CourseService.getCourseByCode);
+router.get('/course/getByName/:Course_Name', CourseService.getCourseByName);
+router.get('/course/getByLecturer/:Lecturer_ID', CourseService.getCourseByLecturer);
+router.put('/course/update/:Course_ID', CourseService.updateCourse);
+router.delete('/course/drop/:Course_ID', CourseService.deleteCourse);
+
 
 module.exports = router;
