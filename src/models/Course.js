@@ -8,10 +8,10 @@ const CourseModel = {
             throw error;
         }
     },
-    addCourse: async (Course_ID,Course_Name, Course_Code, Lecturer_ID) => {
+    addCourse: async (Course_ID,Course_Name, Course_Code, Lecturer_ID, Semester) => {
         try {
-            const results = await query('INSERT INTO Courses (Course_ID, Course_Name, Course_Code, Lecturer_ID) ' +
-                'VALUES (?, ?, ?, ?)', [Course_ID,Course_Name, Course_Code, Lecturer_ID]);
+            const results = await query('INSERT INTO Courses (Course_ID, Course_Name, Course_Code, Lecturer_ID, Semester) ' +
+                'VALUES (?, ?, ?, ?, ?)', [Course_ID,Course_Name, Course_Code, Lecturer_ID, Semester]);
             return results;
         } catch (error) {
             throw error;
@@ -49,9 +49,17 @@ const CourseModel = {
             throw error;
         }
     },
-    updateCourse: async (Course_ID, Course_Name, Course_Code, Lecturer_ID) => {
+    getCourseBySemester: async (Semester) => {
         try {
-            const results = await query('UPDATE Courses SET Course_Name = ?, Course_Code = ?, Lecturer_ID = ? WHERE Course_ID = ?', [Course_Name, Course_Code, Lecturer_ID, Course_ID]);
+            const results = await query('SELECT * FROM Courses WHERE Semester = ?', [Semester]);
+            return results;
+        } catch (error) {
+            throw error;
+        }
+    },
+    updateCourse: async (Course_ID, Course_Name, Course_Code, Lecturer_ID, Semester) => {
+        try {
+            const results = await query('UPDATE Courses SET Course_Name = ?, Course_Code = ?, Lecturer_ID = ? , Semester = ? WHERE Course_ID = ?', [Course_Name, Course_Code, Lecturer_ID, Semester, Course_ID]);
             return results;
         } catch (error) {
             throw error;

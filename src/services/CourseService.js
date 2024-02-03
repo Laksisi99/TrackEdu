@@ -61,9 +61,20 @@ const CourseService = {
             errorResponse(res, 'Error Occcurred while fetching Course by lecturer : ' + error);
         }
     },
+    getCourseBySemester: async (req, res) => {
+        const { Semester } = req.params;
+        try {
+            const results = await CourseModel.getCourseBySemester(Semester);
+            if(results.lenght === 0) return errorResponse(res, 'No Course found', 404);
+            successResponse(res, 'Course retrieved successfully', results)
+        }  catch (error) {
+            console.error('Error in Course:', error);
+            errorResponse(res, 'Error Occcurred while fetching Course by lecturer : ' + error);
+        }
+    },
     addCourse: async (req, res) => {
-        const {Course_Name, Course_Code, Lecturer_ID} = req.body;
-        if(!Course_Name || !Course_Code || !Lecturer_ID){
+        const {Course_Name, Course_Code, Lecturer_ID, Semester} = req.body;
+        if(!Course_Name || !Course_Code || !Lecturer_ID || !Semester){
             return errorResponse(res, 'Course_Name, Course_Code and Lecturer_ID are required fields', 400);
         }
 
@@ -75,7 +86,7 @@ const CourseService = {
                 return errorResponse(res, 'Course with that code already exists', 409);
             
             const Course_ID = Math.floor(Math.random() * 1000000000);
-            const result = await CourseModel.addCourse(Course_ID, Course_Name, Course_Code, Lecturer_ID);
+            const result = await CourseModel.addCourse(Course_ID, Course_Name, Course_Code, Lecturer_ID, Semester);
 
             if(result.affectedRows === 0)
                 return errorResponse(res, 'Error adding Course', 400);
@@ -92,7 +103,8 @@ const CourseService = {
         const {
             Course_Name, 
             Course_Code, 
-            Lecturer_ID
+            Lecturer_ID, 
+            Semester
         } = req.body;
        
         try {
@@ -100,7 +112,7 @@ const CourseService = {
 
             if(results.length === 0)
                 return errorResponse(res, 'Course with that id does not exists', 404);
-            const result = await CourseModel.updateCourse(Course_ID, Course_Name, Course_Code, Lecturer_ID);
+            const result = await CourseModel.updateCourse(Course_ID, Course_Name, Course_Code, Lecturer_ID, Semester);
 
             if(result.affectedRows === 0)
                 return errorResponse(res, 'Error updating Course', 400);

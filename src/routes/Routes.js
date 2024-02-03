@@ -81,6 +81,7 @@ router.get('/course/getById/:Course_ID', CourseService.getCourseById);
 router.get('/course/getByCode/:Course_Code', CourseService.getCourseByCode);
 router.get('/course/getByName/:Course_Name', CourseService.getCourseByName);
 router.get('/course/getByLecturer/:Lecturer_ID', CourseService.getCourseByLecturer);
+router.get('/course/getBySemester/:Semester', CourseService.getCourseBySemester);
 router.put('/course/update/:Course_ID', CourseService.updateCourse);
 router.delete('/course/drop/:Course_ID', CourseService.deleteCourse);
 
