@@ -9,6 +9,7 @@ const AcademicStaffService = require('../services/AcademicStaffService');
 const NonAcademicStaffService = require('../services/NonAcademicStaffService');
 const CourseService = require('../services/CourseService');
 const SemesterService = require('../services/SemesterService');
+const RoleService = require('../services/RoleService');
 
 //admin routes
 router.post('/admin/add', AdminService.addAdmin);
@@ -93,5 +94,14 @@ router.get('/semester/getById/:Semester_ID', SemesterService.getSemesterById);
 router.get('/semester/getByName/:Semester_Name', SemesterService.getSemesterByName);
 // router.put('/semester/update/:Semester_ID', SemesterService.updateSemester);
 // router.delete('/semester/drop/:Semester_ID', SemesterService.deleteSemester);
+
+
+// role routes
+router.get('/roles', RoleController.getAllRoles);
+router.post('/roles/add', RoleController.addRole);
+router.get('/roles/:RoleID', RoleController.getRoleByID);
+router.put('/roles/update/:RoleID', RoleController.updateRole);
+router.delete('/roles/drop/:RoleID', RoleController.deleteRole);
+
 
 module.exports = router;
