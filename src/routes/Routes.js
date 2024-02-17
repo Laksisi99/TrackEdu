@@ -10,6 +10,20 @@ const NonAcademicStaffService = require('../services/NonAcademicStaffService');
 const CourseService = require('../services/CourseService');
 const SemesterService = require('../services/SemesterService');
 const RoleService = require('../services/RoleService');
+const AuthService = require('../services/AuthService');
+const TokenAuth = require('../security/TokenAuth');
+
+//auth routes
+router.post('/auth/admin', AuthService.authAdmin);
+router.post('/auth/lecturer', AuthService.authLecturer);
+router.post('/auth/student', AuthService.authStudent);
+router.post('/auth/academicStaff', AuthService.authAcademicStaff);
+router.post('/auth/nonAcademicStaff', AuthService.authNonAcademicStaff);
+router.post('/auth/refreshAdmin', AuthService.newAuthTokenByRefreshTokenAdmin);
+router.post('/auth/refreshLecturer', AuthService.newAuthTokenByRefreshTokenLecturer);
+router.post('/auth/refreshStudent', AuthService.newAuthTokenByRefreshTokenStudent);
+router.post('/auth/refreshAcademicStaff', AuthService.newAuthTokenByRefreshTokenAcademicStaff);
+router.post('/auth/refreshNonAcademicStaff', AuthService.newAuthTokenByRefreshTokenNonAcademicStaff);
 
 //admin routes
 router.post('/admin/add', AdminService.addAdmin);
@@ -95,13 +109,12 @@ router.get('/semester/getByName/:Semester_Name', SemesterService.getSemesterByNa
 // router.put('/semester/update/:Semester_ID', SemesterService.updateSemester);
 // router.delete('/semester/drop/:Semester_ID', SemesterService.deleteSemester);
 
-
 // role routes
-router.get('/roles', RoleController.getAllRoles);
-router.post('/roles/add', RoleController.addRole);
-router.get('/roles/:RoleID', RoleController.getRoleByID);
-router.put('/roles/update/:RoleID', RoleController.updateRole);
-router.delete('/roles/drop/:RoleID', RoleController.deleteRole);
+router.get('/roles', RoleService.getAllRoles);
+router.post('/roles/add', RoleService.addRole);
+router.get('/roles/:RoleID', RoleService.getRoleByID);
+router.put('/roles/update/:RoleID', RoleService.updateRole);
+router.delete('/roles/drop/:RoleID', RoleService.deleteRole);
 
 
 module.exports = router;
