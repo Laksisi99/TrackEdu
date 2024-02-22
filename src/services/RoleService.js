@@ -40,9 +40,9 @@ const RoleService = {
     },
     updateRole: async (req, res) => {
         const {RoleID} = req.params;
-        const {RoleName, CreationDate, Description} = req.body;
+        const {RoleName, Description} = req.body;
         try {
-            const result = await RoleModel.updateRole(RoleID, RoleName, CreationDate, Description);
+            const result = await RoleModel.updateRole(RoleID, RoleName, Description);
             successResponse(res, 'Role updated successfully', result);
         } catch (error) {
             console.error('Error updating role:', error);

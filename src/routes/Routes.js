@@ -113,7 +113,7 @@ router.get('/semester/getByName/:Semester_Name', SemesterService.getSemesterByNa
 router.get('/roles', RoleService.getAllRoles);
 router.post('/roles/add', RoleService.addRole);
 router.get('/roles/:RoleID', RoleService.getRoleByID);
-router.put('/roles/update/:RoleID', RoleService.updateRole);
+// router.put('/roles/update/:RoleID', RoleService.updateRole);
 router.delete('/roles/drop/:RoleID', RoleService.deleteRole);
 
 
