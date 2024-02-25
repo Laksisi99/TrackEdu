@@ -12,6 +12,7 @@ const SemesterService = require('../services/SemesterService');
 const RoleService = require('../services/RoleService');
 const AuthService = require('../services/AuthService');
 const TokenAuth = require('../security/TokenAuth');
+const ResultService = require('../services/ResultService');
 
 //auth routes
 router.post('/auth/admin', AuthService.authAdmin);
@@ -115,6 +116,25 @@ router.post('/roles/add', RoleService.addRole);
 router.get('/roles/:RoleID', RoleService.getRoleByID);
 // router.put('/roles/update/:RoleID', RoleService.updateRole);
 router.delete('/roles/drop/:RoleID', RoleService.deleteRole);
+
+//results routes
+router.post('/results/add', ResultService.addResult);
+router.get('/results', ResultService.getAllResults);
+router.get('/results/getById/:Results_ID', ResultService.getResultById);
+router.get('/results/getByStudentID/:Student_ID', ResultService.getResultByStudent);
+router.get('/results/getByCourseID/:Course_ID', ResultService.getResultByCourse);
+router.get('/results/getBySemester/:Semester_ID', ResultService.getResultBySemester);
+router.get('/results/getByBatch/:Batch_ID', ResultService.getResultByBatch);
+router.get('/results/getResultByBatchIDAndSemesterID/:Batch_ID/:Semester_ID', ResultService.getResultByBatchAndSemester);
+router.get('/results/getResultByBatchAndCourseAndSemester/:Batch_ID/:Course_ID/:Semester_ID', ResultService.getResultByBatchAndCourseAndSemester);
+router.get('/results/getRsultByBatchAndCourseAndSemeseterAndStudent/:Batch_ID/:Course_ID/:Semester_ID/:Student_ID', ResultService.getResultByBatchAndCourseAndSemesterAndStudent);
+router.get('/results/getResultsByBatchAndStudent/:Batch_ID/:Student_ID', ResultService.getResultByBatchAndStudent);
+router.get('/results/getByStudentAndCourse/:Student_ID/:Course_ID', ResultService.getResultByStudentAndCourse);
+router.get('/results/getByStudentAndCourseAndSemester/:Student_ID/:Course_ID/:Semester_ID', ResultService.getResultByStudentAndCourseAndSemester);
+router.get('/results/getByStudentAndSemester/:Student_ID/:Semester_ID', ResultService.getResultByStudentAndSemester);
+router.get('/results/getByCourseAndSemester/:Course_ID/:Semester_ID', ResultService.getResultByCourseAndSemester);
+router.put('/results/update/:Results_ID', ResultService.updateResult);
+router.delete('/results/drop/:Results_ID', ResultService.deleteResult);
 
 
 module.exports = router;
